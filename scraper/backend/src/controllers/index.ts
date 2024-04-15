@@ -23,6 +23,7 @@ export const scrapPostController: RequestHandler = async (req, res) => {
       data: {
         profiles: { create: data },
         name,
+        keyword
       },
     });
 
