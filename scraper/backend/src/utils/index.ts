@@ -26,7 +26,7 @@ const scrapProfilePromises = async (browser: Browser, username: string) => {
 
   const page = await browser.newPage();
   // this will save memeory, we just need to intercept the response
-  page.setViewport({ height: 0, width: 10, hasTouch: false });
+  page.setViewport({ height: 0, width: 0, hasTouch: false });
 
   await new Promise((res) => setTimeout(res, 2000));
 
@@ -126,7 +126,7 @@ export const scrapCastUsernameForKeyword = async (
         }
         if (!found) {
           /**
-           * NOTE: we could use the scrapProfilePromises to scrap user profile using frontend scraping but it's an overall as we can simply make a fetch call to the endpoint that gives us the profile data. The code works with both, i've made both functions
+           * NOTE: we could use the scrapProfilePromises to scrap user profile using frontend scraping but it's an overkill as we can simply make a fetch call to the endpoint that gives us the profile data. The code works with both, i've made both functions
            *
            * const profileData = await scrapProfilePromises(browser, cast.author.username)
            */
