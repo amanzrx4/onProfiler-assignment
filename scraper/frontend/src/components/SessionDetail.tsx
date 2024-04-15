@@ -166,6 +166,9 @@ const SessionDetail = ({ sessionId }: { sessionId: string }) => {
         <h1 className="text-xl text-left my-4">
           Results for keyword: {profiles.data.data.keyword}
         </h1>
+        <h1 className="text-xl text-left my-4">
+          session name: {profiles.data.data.name}
+        </h1>
       </div>
 
       <div className="relative overflow-x-auto">
