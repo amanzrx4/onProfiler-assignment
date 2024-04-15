@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2015", "DOM"],
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "exclude": ["test.js"]
+}
