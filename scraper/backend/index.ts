@@ -18,6 +18,8 @@ export const prisma = new PrismaClient();
 app.use(cors());
 app.use(express.json());
 
+const PORT = process.env.PORT || 8080;
+
 app.get("/", (_, res) => {
   res.send('<h1 style="font-size: 100px;">hello world</h1>');
 });
@@ -25,6 +27,6 @@ app.get("/sessions", sessionController);
 app.post("/scrap", scrapPostController);
 app.get("/scrap", profilesController);
 
-app.listen(process.env.PORT, () => {
-  console.log(`App started on http://localhost:${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`App started on http://localhost:${PORT}`);
 });
