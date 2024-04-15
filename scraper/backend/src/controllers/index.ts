@@ -102,12 +102,12 @@ export const profilesController: RequestHandler = async (req, res) => {
       include: {
         profiles: {
           where: {
-            ...(maxFollowers !== undefined && {
-              followers: { lte: parseInt(maxFollowers) },
-            }),
-            ...(minFollowers !== undefined && {
-              followers: { gte: parseInt(minFollowers) },
-            }),
+            followers: {
+              ...(maxFollowers !== undefined && {
+                lte: parseInt(maxFollowers),
+              }),
+              gte: parseInt(minFollowers) || 0,
+            },
           },
         },
       },

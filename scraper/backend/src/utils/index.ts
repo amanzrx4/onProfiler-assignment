@@ -3,6 +3,7 @@ import { CastResponse, ProfileResponse } from "../../types";
 import { Profile } from "@prisma/client";
 export type { ScrapSession, Profile } from "@prisma/client";
 const ROOT_URL = "https://warpcast.com";
+
 const getQueryUrl = (query: string) => {
   return ROOT_URL + `/~/search/casts?q=${query}`;
 };
@@ -28,8 +29,6 @@ const scrapProfilePromises = async (browser: Browser, username: string) => {
   // this will save memeory, we just need to intercept the response
   page.setViewport({ height: 0, width: 0, hasTouch: false });
 
-  await new Promise((res) => setTimeout(res, 2000));
-
   const extractDataPromise = new Promise<ExtractData>(
     async (resolve, reject) => {
       page.on("response", async (res) => {
@@ -41,8 +40,6 @@ const scrapProfilePromises = async (browser: Browser, username: string) => {
             const buffer = await res.buffer();
             const bufferText = buffer.toString();
             const bufferJson = JSON.parse(bufferText) as ProfileResponse;
-
-            console.log("relevant request");
 
             const data: ExtractData = {
               fid: bufferJson.result.user.fid,
@@ -97,7 +94,6 @@ export const scrapCastUsernameForKeyword = async (
   browser: Browser,
   keyword: string
 ): Promise<Username[]> => {
-  console.log("starting \n");
   let exit = false;
   /***
    * stores only usernames of the casts, will avoid duplicacy as well
@@ -171,6 +167,6 @@ export const scrapCastUsernameForKeyword = async (
           });
         });
       }
-    }, 2000);
+    }, 500);
   });
 };
