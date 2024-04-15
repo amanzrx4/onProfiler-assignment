@@ -1,7 +1,7 @@
 import { Browser, Page } from "puppeteer";
 import { CastResponse, ProfileResponse } from "../../types";
 import { Profile } from "@prisma/client";
-export { ScrapSession, Profile } from "@prisma/client";
+export type { ScrapSession, Profile } from "@prisma/client";
 const ROOT_URL = "https://warpcast.com";
 const getQueryUrl = (query: string) => {
   return ROOT_URL + `/~/search/casts?q=${query}`;
