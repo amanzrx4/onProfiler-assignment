@@ -8,9 +8,6 @@ import {
 } from "./src/controllers";
 import cors from "cors";
 
-console.log =
-  process.env.NODE_ENV === "production" ? function () {} : console.log;
-
 dotenv.config();
 const app = express();
 export const prisma = new PrismaClient();
@@ -29,4 +26,6 @@ app.get("/scrap", profilesController);
 
 app.listen(PORT, () => {
   console.log(`App started on http://localhost:${PORT}`);
+  console.log =
+    process.env.NODE_ENV === "production" ? function () {} : console.log;
 });
